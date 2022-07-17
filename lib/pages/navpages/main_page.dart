@@ -1,6 +1,7 @@
+import '../home_page.dart';
 import '/pages/navpages/my_page.dart';
 import 'package:flutter/material.dart';
-import '/pages/navpages/home_page.dart';
+
 import '/pages/navpages/search_page.dart';
 import '/pages/navpages/bar_item_page.dart';
 
@@ -18,18 +19,40 @@ class _MainPageState extends State<MainPage> {
     SearchPage(),
     MyPage(),
   ];
+
+  int currentIndex = 0;
+
+  void onTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[0],
+      backgroundColor: Colors.white,
+      body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(title: Text("Home"), icon: Icon(Icons.apps)),
+        type: BottomNavigationBarType.fixed,
+        onTap: onTap,
+        elevation: 0,
+        currentIndex: currentIndex,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.black54,
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        unselectedItemColor: Colors.grey.withOpacity(0.5),
+        items: const [
+          BottomNavigationBarItem(label: "Home", icon: Icon(Icons.apps)),
           BottomNavigationBarItem(
-              title: Text("Bar"), icon: Icon(Icons.bar_chart_sharp)),
-          BottomNavigationBarItem(
-              title: Text("Search"), icon: Icon(Icons.search)),
-          BottomNavigationBarItem(title: Text("My"), icon: Icon(Icons.person)),
+            label: "Bar",
+            icon: Icon(Icons.bar_chart_sharp),
+          ),
+          BottomNavigationBarItem(label: "Search", icon: Icon(Icons.search)),
+          BottomNavigationBarItem(label: "My", icon: Icon(Icons.person)),
         ],
       ),
     );
