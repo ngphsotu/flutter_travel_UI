@@ -1,8 +1,10 @@
 import '../misc/colors.dart';
+import '../cubit/app_cubits.dart';
 import '../widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import '../widgets/app_large_text.dart';
 import '../widgets/responsive_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -54,8 +56,20 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                       const SizedBox(height: 40),
-                      ResponsiveButton(
-                        width: 120,
+                      GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<AppCutbits>(context).getData();
+                        },
+                        child: Container(
+                          width: 200,
+                          child: Row(
+                            children: [
+                              ResponsiveButton(
+                                width: 120,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),

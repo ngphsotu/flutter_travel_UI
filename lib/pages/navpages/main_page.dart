@@ -1,8 +1,8 @@
 import '../home_page.dart';
-import '/pages/navpages/my_page.dart';
+import '../navpages/my_page.dart';
+import '../navpages/search_page.dart';
 import 'package:flutter/material.dart';
-import '/pages/navpages/search_page.dart';
-import '/pages/navpages/bar_item_page.dart';
+import '../navpages/bar_item_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
